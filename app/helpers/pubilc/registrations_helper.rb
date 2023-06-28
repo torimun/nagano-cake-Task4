@@ -1,0 +1,2 @@
+module Pubilc::RegistrationsHelper
+end
