@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :customers
   devise_for :admins
-  namespace :admin do
+  devise_for :customers
+  namespace :admins do
     get 'homes/top'
     get 'orders/show'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :sessions, only: [:new, :create, :destroy]
   end
-  
+
   namespace :pubilc do
     get 'orders/new'
     get 'orders/confirm'
@@ -47,6 +47,6 @@ Rails.application.routes.draw do
   namespace :pubilc do
     get 'homes/top'
     get 'homes/about'
-  end  
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
