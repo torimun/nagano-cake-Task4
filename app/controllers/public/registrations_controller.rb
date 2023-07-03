@@ -7,6 +7,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     super
+    @last_name = Last_name
   end
 
   # POST /resource
