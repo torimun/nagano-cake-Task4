@@ -20,7 +20,7 @@
           </button>
           <div class="collapse navbar-collapse text-white" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto" >
-              <% if admin_signed_in? %>
+              <% if customer_signed_in? %>
                 <li>
                   <%= link_to "マイページ", class:"m-2 text-light" %>
                 </li>
@@ -29,6 +29,19 @@
                 </li>
                 <li>
                 <%= link_to "カート", class:"m-2 text-light" %>
+                </li>
+                <li>
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"m-2 text-light" %>
+                </li>
+              <% elsif admin_signed_in? %>
+                <li>
+                  <%= link_to "商品一覧", class:"m-2 text-light" %>
+                </li>
+                <li>
+                  <%= link_to "会員一覧", class:"m-2 text-light" %>
+                </li>
+                <li>
+                <%= link_to "注文一覧", class:"m-2 text-light" %>
                 </li>
                 <li>
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"m-2 text-light" %>
