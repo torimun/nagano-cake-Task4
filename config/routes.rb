@@ -21,7 +21,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   end
 
 
-  namespace :pubilc do
+  namespace :public do
     get 'homes/top'
     get 'homes/about'
     resources :orders, only: [:new, :confirm, :done, :create, :index, :show]
