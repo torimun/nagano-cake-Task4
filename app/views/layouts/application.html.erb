@@ -20,32 +20,33 @@
           </button>
           <div class="collapse navbar-collapse text-white" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto" >
-
-              <li>
-                <%= link_to "マイページ", class:"m-2 text-light" %>
-              </li>
-              <li>
-                <%= link_to "商品一覧", class:"m-2 text-light" %>
-              </li>
-              <li>
+              <% if admin_signed_in? %>
+                <li>
+                  <%= link_to "マイページ", class:"m-2 text-light" %>
+                </li>
+                <li>
+                  <%= link_to "商品一覧", class:"m-2 text-light" %>
+                </li>
+                <li>
                 <%= link_to "カート", class:"m-2 text-light" %>
-              </li>
-              <li>
-                <%= link_to "ログアウト", class:"m-2 text-light" %>
-              </li>
-
-              <li>
-                <%= link_to "About", class:"m-2 text-light" %>
-              </li>
-              <li>
-                <%= link_to "商品一覧", class:"m-2 text-light" %>
-              </li>
-              <li>
-                <%= link_to "新規登録", class:"m-2 text-light" %>
-              </li>
-              <li>
-                <%= link_to "ログイン", class:"m-2 text-light" %>
-              </li>
+                </li>
+                <li>
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"m-2 text-light" %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to "About", class:"m-2 text-light" %>
+                </li>
+                <li>
+                  <%= link_to "商品一覧", class:"m-2 text-light" %>
+                </li>
+                <li>
+                  <%= link_to "新規登録", class:"m-2 text-light" %>
+                </li>
+                <li>
+                  <%= link_to "ログイン", class:"m-2 text-light" %>
+                </li>
+              <% end %>
             </ul>
           </div>
         </div>
