@@ -1,2 +1,0 @@
-module Pubilc::CartItemsHelper
-end
