@@ -10,6 +10,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
     #mypageへのpath記載
   end
 
+
   # GET /resource/sign_up
   def new
     super
