@@ -7,7 +7,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
    before_action :configure_permitted_parameters, only: [:create]
 
   def after_sign_in_path_for(resource)
-    public_homes_top_path
+    public_customers_mypage_path
   end
 
 
