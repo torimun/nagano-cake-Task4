@@ -8,7 +8,6 @@
 
   <%= form_with model: @customer, url: public_customers_information_edit_path do |f| %>
 
-    <%= render "public/shared/error_messages", rescue: rescue %><% end %>
     <div class="row mb-1">
       <div class="col">
         <%= f.label :名前 %>
