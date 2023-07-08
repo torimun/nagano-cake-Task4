@@ -4,7 +4,8 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-   before_action :configure_permitted_parameters, only: [:create]
+  before_action :customer_state, only: [:create]
+  before_action :configure_permitted_parameters, only: [:create]
 
   def after_sign_in_path_for(resource)
     public_customers_mypage_path
@@ -68,8 +69,21 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
 
   private
+
+  def customer_state
+  # 【処理内容1】 入力されたemailからアカウントを1件取得
+  @customer = Customer.find_by(email: params[:customer][:email])
+  # アカウントを取得できなかった場合、このメソッドを終了する
+  return if !@customer
+  # 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるか、is_deletedの値がtrueであるか
+  if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
+      redirect_to new_customer_registration_path
+  end
+end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up,
     keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number])
   end
+
 end
