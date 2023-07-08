@@ -8,7 +8,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-
+    @customer=current_customer
+    @customer.update(customers_params)
+    redirect_to public_customers_mypage_path(@customer)
   end
 
   def confirm
@@ -17,5 +19,11 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
 
+  end
+
+  private
+  
+  def customers_params
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number)
   end
 end

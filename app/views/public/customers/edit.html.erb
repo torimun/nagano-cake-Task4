@@ -6,7 +6,7 @@
       </div>
     </div>
 
-  <%= form_with model: @customer, url: public_customers_information_edit_path do |f| %>
+  <%= form_with model: @customer, url: public_customers_information_path, method: :patch do |f| %>
 
     <div class="row mb-1">
       <div class="col">
