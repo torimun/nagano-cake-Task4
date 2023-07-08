@@ -31,7 +31,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get 'customers/mypage', to: 'customers#show'
     get 'customers/information/edit', to: 'customers#edit'
     patch 'customers/information', to: 'customers#update'
+
+    #退会確認画面
     get 'customers/confirm_withdraw', to: 'customers#confirm'
+    #会員の退会処理
     patch 'customers/withdraw', to: 'customers#withdraw'
   end
 
