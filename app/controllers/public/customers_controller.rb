@@ -19,7 +19,7 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
     @customer=current_customer
-    @customer.update(@customer.is_deleted == true)
+    @customer.update(is_deleted: true)
     redirect_to public_homes_top_path
   end
 
