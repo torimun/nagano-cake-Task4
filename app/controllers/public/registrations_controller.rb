@@ -7,11 +7,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   before_action :customer_state, only: [:create]
   before_action :configure_permitted_parameters, only: [:create]
 
-  def after_sign_in_path_for(resource)
-    public_customers_mypage_path
-  end
-
-
   # GET /resource/sign_up
   def new
     super
@@ -79,6 +74,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
     if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
         redirect_to new_customer_registration_path
     end
+  end
+
+  def after_sign_in_path_for(resource)
+    public_customers_mypage_path
   end
 
   def configure_permitted_parameters
