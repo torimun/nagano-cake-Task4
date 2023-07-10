@@ -1,2 +1,41 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
+<main>
+  <div class="container">
+    <div class="row my-3">
+      <div class="col-lg-6 justify-content-center">
+        <h4>商品一覧</h4>
+      </div>
+      <div class="col-lg-5">
+        <%= link_to new_admin_item_path do %>
+          <p>新しく商品の追加</p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-10 justify-content-center">
+        <table class="border-top border-bottom" width="100%">
+    <tr class="border-bottom">
+      <th width="10%">商品ID</th>
+      <th width="30%">商品名</th>
+      <th width="60%">税抜価格</th>
+    </tr>
+    <!--繰り返し文(each文)を使って以下の物を量産　10個分あたりになったらページネーションで次のページに飛ばす-->
+    <% @items.each do |item| %>
+      <tr class="border-bottom">
+        <td width="10%">
+          <%= item.id %>
+        </td>
+        <td width="30%">
+          <%= item.name %>
+        </td>
+        <td width="60%">
+          <%= item.price %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+      </div>
+    </div>
+
+  </div>
+</main>

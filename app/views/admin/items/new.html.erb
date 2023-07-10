@@ -1,2 +1,55 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<main>
+  <div class="container">
+    <div class="row">
+      <h4>商品新規登録</h4>
+    </div>
+
+    <!--投稿画面でurlを書くときは、itemではなく複数形であるitemsと記載する-->
+    <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+    <div class="row mt-4 justify-content-center">
+      <div class="col-lg-2">
+        <p>商品画像</p>
+      </div>
+      <div class="col-lg-4">
+        <%= f.file_field :image, accept: "image/*" %>
+      </div>
+    </div>
+
+    <div class="row mt-1 justify-content-center">
+      <div class="col-lg-2">
+        <p>商品名</p>
+      </div>
+      <div class="col-lg-4">
+        <%= f.text_field :name %>
+      </div>
+    </div>
+
+    <div class="row mt-1 justify-content-center">
+      <div class="col-lg-2">
+        <p>商品説明文</p>
+      </div>
+      <div class="col-lg-4">
+        <%= f.text_area :introduction, class: 'form-control', rows: "3%", cols: "5%"%>
+      </div>
+    </div>
+
+    <div class="row mt-2 justify-content-center">
+      <div class="col-lg-2">
+        <p>税抜価格</p>
+      </div>
+      <div class="col-lg-3">
+        <%= f.text_field :price %>
+      </div>
+      <div class="col-lg-1">
+        <p>円</p>
+      </div>
+    </div>
+
+    <div class="row mt-5 justify-content-center">
+      <div class="col-lg-2">
+        <%= f.submit "新規登録", class: "btn btn-success" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</main>
