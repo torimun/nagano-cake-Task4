@@ -4,8 +4,8 @@
       <h4>商品編集</h4>
     </div>
 
-    <!--投稿画面でurlを書くときは、itemではなく複数形であるitemsと記載する-->
-    <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+    <!--編集画面でurlを書くときは、複数形のitmesではなく、単数形のitemと記載する-->
+    <%= form_with model: @item, url: admin_item_path, method: :patch do |f| %>
     <div class="row mt-4 justify-content-center">
       <div class="col-lg-2">
         <p>商品画像</p>
