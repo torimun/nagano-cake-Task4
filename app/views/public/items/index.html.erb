@@ -10,11 +10,18 @@
     </div>
 
     <div class="row justify-content-center">
+      <% @items.each do |item| %>
       <div class="col-lg-2">
         <tr>
-          <th><img src="/assets/no_image.jpg"></th>
-          <th><p>商品名</p></th>
-          <th><p>¥0,000</p></th>
+          <td>
+            <img src="/assets/no_image.jpg">
+          </td>
+          <td>
+            <%= item.name %>
+          </td>
+          <td>
+            <%= item.price %>
+          </td>
         </tr>
       </div>
       <div class="col-lg-2">
@@ -39,6 +46,7 @@
         </tr>
       </div>
     </div>
+    <% end %>
 
     <div class="row my-3 justify-content-center">
       <div class="col-lg-2">
@@ -70,5 +78,12 @@
         </tr>
       </div>
     </div>
+
+     <div class="row mt-5 justify-content-center">
+      <div class="col-lg4">
+        <%= paginate @items %>
+      </div>
+    </div>
+
   </div>
 </main>
