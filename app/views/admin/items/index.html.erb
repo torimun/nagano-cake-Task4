@@ -19,14 +19,14 @@
       <th width="30%">商品名</th>
       <th width="60%">税抜価格</th>
     </tr>
-    <!--繰り返し文(each文)を使って以下の物を量産　10個分あたりになったらページネーションで次のページに飛ばす-->
+    <!--繰り返し文(each文)を使って以下の物を量産　1５個分あたりになったらページネーションで次のページに飛ばす-->
     <% @items.each do |item| %>
       <tr class="border-bottom">
         <td width="10%">
           <%= item.id %>
         </td>
         <td width="30%">
-          <%= link_to admin_items_path(item.id) do %>
+          <%= link_to admin_item_path(item.id) do %>
             <%= item.name %>
           <% end %>
         </td>

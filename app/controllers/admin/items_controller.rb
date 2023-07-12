@@ -9,6 +9,7 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    #item_paramsで情報の取得、saveでidを作成している。
     @item.save
     redirect_to admin_item_path(@item.id)
   end
