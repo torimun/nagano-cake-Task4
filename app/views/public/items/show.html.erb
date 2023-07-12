@@ -32,14 +32,12 @@
 
         <div class="row">
           <div class="col-lg-3">
-            <p>税込価格<br>
-              （税抜価格）
-            </p>
+            <p>税込価格</p>
           </div>
           <!--以下の様に税込み価格を入れる場合は、@モデル名.add_tax_税込み計算をしたいカラム（今回の例だとprice）を入れる-->
           <!--(:dalimited)は数値を3桁区切りにしてくれるもの-->
           <div class="col-lg-4">
-            <p><%= @item.add_tax_price.to_s(:dalimited) %></p>
+            <p>￥<%= @item.add_tax_price.to_s(:dalimited) %>（税込）</p>
           </div>
         </div>
 
