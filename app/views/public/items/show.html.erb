@@ -1,1 +1,49 @@
-<h1>ここは商品詳細画面</h1>
+<main>
+  <div class="container">
+    <div class="row my-4">
+      <div class="col-lg-6 justify-content-center">
+        <h4>商品詳細</h4>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-3 mr-3">
+        <%= image_tag @item.image.variant( resize: "200" ) %>
+      </div>
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="col-lg-3">
+            <p>商品名</p>
+         </div>
+         <div class="col-lg-4">
+          <%= @item.name %>
+         </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3">
+            <p>商品説明文</p>
+          </div>
+          <div class="col-lg-4">
+            <%= @item.introduction %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3">
+            <p>税込価格<br>
+              （税抜価格）
+            </p>
+          </div>
+          <!--以下の様に税込み価格を入れる場合は、@モデル名.add_tax_税込み計算をしたいカラム（今回の例だとprice）を入れる-->
+          <!--(:dalimited)は数値を3桁区切りにしてくれるもの-->
+          <div class="col-lg-4">
+            <p><%= @item.add_tax_price.to_s(:dalimited) %></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
