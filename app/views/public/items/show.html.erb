@@ -41,6 +41,22 @@
           </div>
         </div>
 
+        <div class="row">
+          <p>数量を選択して下さい</p>
+        </div>
+
+        <%= form_with model: @cartitem, url: public_cart_items_index_path, method: :post do |f|%>
+        <div class="row ">
+          <div class="col-lg-2 mr-2">
+            <%= f.hidden_field :item_id, :value=> @item.id %>
+            <%= f.select :amount, [['個数選択',0], ['1個',1], ['２個',2], ['３個',3], ['４個',4], ['５個',5]] %>
+          </div>
+          <div class="col-lg-2">
+            <%= f.submit "カートに入れる", class: "btn btn-success" %>
+          </div>
+        </div>
+        <% end %>
+
       </div>
     </div>
   </div>

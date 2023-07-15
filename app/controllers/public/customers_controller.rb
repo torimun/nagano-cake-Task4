@@ -1,6 +1,7 @@
 class Public::CustomersController < ApplicationController
   def show
     @customer=current_customer
+    @cart_item = CartItem.new
   end
 
   def edit
