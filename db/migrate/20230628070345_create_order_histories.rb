@@ -1,6 +1,7 @@
 class CreateOrderHistories < ActiveRecord::Migration[6.1]
   def change
     create_table :order_histories do |t|
+      t.integer :customer_id, null: false #会員ID(外部キー)
       t.string :postal_code, null: false
       t.string :address, null: false
       t.string :address_name, null: false
