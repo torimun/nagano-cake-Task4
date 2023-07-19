@@ -80,8 +80,7 @@ ActiveRecord::Schema.define(version: 2023_07_11_042537) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.integer "customer_id", null: false
+    t.integer "admin_id", null: false
     t.string "name", null: false
     t.text "introduction", null: false
     t.integer "price", null: false

@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   def index
-    @items = Item.all.page(params[:page]).per(15)
+    @items = Item.all.page(params[:page]).per(5)
   end
 
   def new
@@ -9,7 +9,10 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    #item_paramsで情報の取得、saveでidを作成している。
+    #外部キーのidは自動で作成されないので、自身で以下の様に追加する必要がある
+    #今回の様にNOT NULL等言われたら、追加してあげれば大抵は問題ない
+    @item.admin_id = current_admin.id
+    #item_paramsで情報の取得、saveでidを作成している
     @item.save
     redirect_to admin_item_path(@item.id)
   end
