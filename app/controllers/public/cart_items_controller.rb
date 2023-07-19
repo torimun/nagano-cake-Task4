@@ -16,8 +16,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    binding.pry
     @item = Item.find(cart_item_params[:item_id])
+    @item.save
+    redirect_to public_cart_items_index_path
   end
 
   private

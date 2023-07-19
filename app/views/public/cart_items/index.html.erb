@@ -1,1 +1,12 @@
-<h1>ここはカートアイテム一覧画面</h1>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 my-3 justify-content-center">
+        <h4>ショッピングカート</h4>
+      </div>
+      <div class="col-lg-5 my-3 text-right">
+        <%= link_to "カートを空にする", public_cart_items_index_path, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</main>
