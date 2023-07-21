@@ -4,7 +4,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-
+    @cart_item = CartItem.find(cart_item_params[:id])
   end
 
   def destroy

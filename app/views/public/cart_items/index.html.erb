@@ -11,23 +11,48 @@
 
     <div class="row">
       <div class="col jstifuy-content-center">
-      <table width="100%">
-        <tr height="50%">
-          <th class="border"  width="40%">商品名</th>
-          <th class="border"  width="15%">単価(税込)</th>
-          <th class="border"  width="15%">数量</th>
-          <th class="border"  width="15%">小計</th>
-          <th class="border"  width="15%"></th>
-        </tr>
+        <table width="100%">
+          <thead height="50%">
+            <th class="border"  width="40%">商品名</th>
+            <th class="border"  width="15%">単価(税込)</th>
+            <th class="border"  width="15%">数量</th>
+            <th class="border"  width="15%">小計</th>
+            <th class="border"  width="15%"></th>
+          </thead>
+          <tbody>
+            <%= @cart_item.each do |cart_item| %>
+              <tr height="50%">
+                <td class="border"  width="40%">
+                  <%= cart_item.name %>
+                </td>
+                <td class="border"  width="15%">
+                  <%= cart_item.item.add_tax_price%>
+                </td>
+                <td class="border"  width="15%">
+                  <%= form_with model: @cart_item, url: public_cart_items_update_path, method: :patch do |f|%>
+                    <%= f.select :amount, [['1個',1], ['２個',2], ['３個',3], ['４個',4], ['５個',5]] %>
+                    <%= f.submit "変更", class: "btn btn-success" %>
+                  <% end %>
+                </td>
+                <td class="border"  width="15%">
+                  <%= cart_item.subtotal%>
+                </td>
+                <td class="border"  width="15%">
 
-        <tr height="50%">
-          <td class="border"  width="40%">名前</td>
-          <td class="border"  width="15%">1100</td>
-          <td class="border"  width="15%"></td>
-          <td class="border"  width="15%">1000</td>
-          <td class="border"  width="15%">削除</td>
-        </tr>
-      </table>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6 my-4 jstifuy-content-center">
+        <%= link_to "買い物を続ける", public_homes_top_path, class: "btn btn-primary" %>
+      </div>
+      <div class="col-lg-6 jstifuy-content-center">
+
       </div>
     </div>
   </div>
