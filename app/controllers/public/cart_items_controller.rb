@@ -17,7 +17,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
-
+    @cart_items = CartItem.all
+    @cart_items.destroy_all
+    redirect_to public_cart_items_index_path
   end
 
   def create

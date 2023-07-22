@@ -5,7 +5,8 @@
         <h4>ショッピングカート</h4>
       </div>
       <div class="col-lg-5 my-3 text-right">
-        <%= link_to "カートを空にする", public_cart_items_index_path, class: "btn btn-danger" %>
+        <%= link_to "カートを空にする", public_cart_items_destroy_all_path, method: :delete,
+          "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
       </div>
     </div>
 
@@ -39,8 +40,8 @@
                   <% @total += cart_item.subtotal %>
                 </td>
                 <td class="border"  width="15%">
-                  <!--後で、削除用のリンクを作成-->
-                  <%= link_to "削除する", public_cart_items_destroy_path(cart_item.id), class: "btn btn-danger"%>
+                  <%= link_to "削除する", public_cart_items_destroy_path(cart_item.id), method: :delete,
+                    "data-confirm" => "本当に削除しますか？", class: "btn btn-danger"%>
                 </td>
               </tr>
             <% end %>
@@ -64,5 +65,6 @@
         </table>
       </div>
     </div>
+
   </div>
 </main>
