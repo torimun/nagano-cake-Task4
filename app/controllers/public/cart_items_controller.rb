@@ -4,7 +4,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    @cart_item = CartItem.find(cart_item_params[:id])
+
   end
 
   def destroy
@@ -16,8 +16,15 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @item = Item.find(cart_item_params[:item_id])
-    @item.save
+    cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id], customer_id: current_customer.id)
+    if cart_item.nil?
+      @cart_item = CartItem.new(cart_item_params)
+      @cart_item.customer_id = current_customer.id
+      @cart_item.save
+    else
+      cart_item.amount+=params[:cart_item][:amount].to_i
+      cart_item.save
+    end
     redirect_to public_cart_items_index_path
   end
 

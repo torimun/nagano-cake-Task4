@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col jstifuy-content-center">
         <table width="100%">
-          <thead height="50%">
+          <thead>
             <th class="border"  width="40%">商品名</th>
             <th class="border"  width="15%">単価(税込)</th>
             <th class="border"  width="15%">数量</th>
@@ -20,13 +20,13 @@
             <th class="border"  width="15%"></th>
           </thead>
           <tbody>
-            <%= @cart_item.each do |cart_item| %>
-              <tr height="50%">
+            <% @cart_item.each do |cart_item| %>
+              <tr>
                 <td class="border"  width="40%">
-                  <%= cart_item.name %>
+                  <%= cart_item.item.name %>
                 </td>
                 <td class="border"  width="15%">
-                  <%= cart_item.item.add_tax_price%>
+                  <%= cart_item.item.add_tax_price %>
                 </td>
                 <td class="border"  width="15%">
                   <%= form_with model: @cart_item, url: public_cart_items_update_path, method: :patch do |f|%>
@@ -38,7 +38,8 @@
                   <%= cart_item.subtotal%>
                 </td>
                 <td class="border"  width="15%">
-
+                  <!--後で、削除用のリンクを作成-->
+                  <%= link_to "削除する", public_cart_items_index_path, class: "btn btn-danger"%>
                 </td>
               </tr>
             <% end %>
@@ -51,8 +52,13 @@
       <div class="col-lg-6 my-4 jstifuy-content-center">
         <%= link_to "買い物を続ける", public_homes_top_path, class: "btn btn-primary" %>
       </div>
-      <div class="col-lg-6 jstifuy-content-center">
-
+      <div class="col-lg-6 my-4 jstifuy-content-center">
+        <table>
+          <tr>
+            <tb class="border">合計金額</tb>
+            <tb class="border"></tb>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
