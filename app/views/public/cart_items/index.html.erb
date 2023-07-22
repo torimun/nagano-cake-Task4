@@ -20,7 +20,7 @@
             <th class="border"  width="15%"></th>
           </thead>
           <tbody>
-            <% @cart_item.each do |cart_item| %>
+            <% @cart_items.each do |cart_item| %>
               <tr>
                 <td class="border"  width="40%">
                   <%= cart_item.item.name %>
@@ -29,17 +29,18 @@
                   <%= cart_item.item.add_tax_price %>
                 </td>
                 <td class="border"  width="15%">
-                  <%= form_with model: @cart_item, url: public_cart_items_update_path, method: :patch do |f|%>
-                    <%= f.select :amount, [['1個',1], ['２個',2], ['３個',3], ['４個',4], ['５個',5]] %>
+                  <%= form_with model: cart_item, url: public_cart_items_update_path(cart_item.id), method: :patch do |f|%>
+                    <%= f.select :amount, [['1個',1], ['２個',2], ['３個',3], ['４個',4], ['５個',5], ['６個',6], ['７個',7], ['８個',8] ,['９個',9]] %>
                     <%= f.submit "変更", class: "btn btn-success" %>
                   <% end %>
                 </td>
                 <td class="border"  width="15%">
                   <%= cart_item.subtotal%>
+                  <% @total += cart_item.subtotal %>
                 </td>
                 <td class="border"  width="15%">
                   <!--後で、削除用のリンクを作成-->
-                  <%= link_to "削除する", public_cart_items_index_path, class: "btn btn-danger"%>
+                  <%= link_to "削除する", public_cart_items_destroy_path(cart_item.id), class: "btn btn-danger"%>
                 </td>
               </tr>
             <% end %>
@@ -49,14 +50,16 @@
     </div>
 
     <div class="row">
-      <div class="col-lg-6 my-4 jstifuy-content-center">
+      <div class="col-lg-6 my-3 jstifuy-content-center">
         <%= link_to "買い物を続ける", public_homes_top_path, class: "btn btn-primary" %>
       </div>
       <div class="col-lg-6 my-4 jstifuy-content-center">
         <table>
           <tr>
-            <tb class="border">合計金額</tb>
-            <tb class="border"></tb>
+            <tb class="border p-2">合計金額</tb>
+            <tb class="border p-2">
+              <%= @total %>
+            </tb>
           </tr>
         </table>
       </div>
