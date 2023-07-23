@@ -41,8 +41,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :public do
     get 'cart_items/index'
     patch 'cart_items/:id' => 'cart_items#update', as: :cart_items_update
-    delete 'cart_items/:id', to: 'cart_items#destroy', as: :cart_items_destroy
     delete 'cart_items/destroy_all', to: 'cart_items#destroy_all'
+    delete 'cart_items/:id', to: 'cart_items#destroy', as: :cart_items_destroy
     post 'cart_items/create'
   end
 
