@@ -32,36 +32,19 @@
         <h3>新着情報</h3>
       </div>
 
-      <div class="row">
-        <div class="col-lg-3"></div>
-        <div class="col-lg-2">
-          <tr>
-            <th><img src="/assets/no_image.jpg"></th>
-            <th><p>商品名</p></th>
-            <th><p>¥0,000</p></th>
-          </tr>
-        </div>
-        <div class="col-lg-2">
-          <tr>
-            <th><img src="/assets/no_image.jpg"></th>
-            <th><p>商品名</p></th>
-            <th><p>¥0,000</p></th>
-          </tr>
-        </div>
-        <div class="col-lg-2">
-          <tr>
-          <th><img src="/assets/no_image.jpg"></th>
-            <th><p>商品名</p></th>
-            <th><p>¥0,000</p></th>
-          </tr>
-        </div>
-        <div class="col-lg-2">
-          <tr>
-            <th><img src="/assets/no_image.jpg"></th>
-            <th><p>商品名</p></th>
-            <th><p>¥0,000</p></th>
-            </tr>
-        </div>
+      <div class="row my-3 d-flex ">
+        <!--each文の前に、last()として（）に数字を入れると後ろから指定された回数分繰り返す。-->
+        <% @items.last(4).each do |item| %>
+          <div class="col-lg-2">
+            <div class="row">
+                <%= link_to public_item_path(item.id) do %>
+                  <%= image_tag item.image.variant( resize: "120" ) %>
+                <% end %>
+            </div>
+            <div class="row"><%= item.name %></div>
+            <div class="row">￥<%= item.price %></div>
+          </div>
+        <% end %>
       </div>
 
       <div class="row d-flex justify-content-end">
