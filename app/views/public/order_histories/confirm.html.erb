@@ -73,5 +73,14 @@
       </div>
     </div>
 
+    <div class="row justify-content-center">
+      <div class="col-lg-3">
+        <%= form_with model: @order_history, public_order_histories_create_path, method: :post do |f| %>
+        <!--ここにhidden_fieldを使って、上記の表示されている内容を送信するフォームを作成-->
+          <% f.submit "注文を確定する", class: "btn btn-success"%>
+        <% end %>
+      </div>
+    </div>
+
   </div>
 </main>

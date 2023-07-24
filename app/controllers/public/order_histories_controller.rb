@@ -17,7 +17,7 @@ class Public::OrderHistoriesController < ApplicationController
   end
 
   def create
-
+    @order_history = OrderHistory.new(order_history_params)
   end
 
   def index

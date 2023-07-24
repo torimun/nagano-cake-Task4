@@ -45,7 +45,7 @@
           <p>数量を選択して下さい</p>
         </div>
 
-        <%= form_with model: @cart_item, url: public_cart_items_create_path, method: :post do |f|%>
+        <%= form_with model: @cart_item, url: public_cart_items_create_path, method: :post do |f| %>
         <div class="row ">
           <div class="col-lg-2 mr-2">
             <%= f.hidden_field :item_id, :value=> @item.id %>
