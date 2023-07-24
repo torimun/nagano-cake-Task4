@@ -5,7 +5,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-
+    @cart_items = CartItem.all
+    @customer = current_customer
+    @order_history = OrderHistory.method_of_payments
+    @total = 0
+    @postage = 800
   end
 
   def done
@@ -23,4 +27,5 @@ class Public::OrdersController < ApplicationController
   def show
 
   end
+
 end
