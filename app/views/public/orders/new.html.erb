@@ -1,1 +1,40 @@
-<h1>ここは、注文支払い方法確認画面</h1>
+<main>
+  <div class="container">
+    <div class="row my-3">
+      <div class="col-lg-3">
+        <h4>注文情報入力</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <strong>支払い方法</strong>
+    </div>
+    <%= form_with model: order_history, url: public_orders_confirm_path do |f| %>
+    <div class="row">
+      <%= f.radio_button :payment_method, "credit_card" %>
+      <%= f.label :payment_method_credit_card, "クレジットカード" %>
+
+      <%= f.radio_button :payment_method, "transfer" %>
+      <%= f.label :payment_method_transfer, "銀行振込" %>
+    </div>
+
+    <div class="row">
+      <strong>お届け先</strong>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-9">
+        <p>〒<%= @customer.postal_code %> <%= @customer.address %></br>
+        <%= @customer.last_name %><%= @customer.first_name %><p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3">
+        <%= f.submit "確認画面に進む", class: "btn btn-primary" %>
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+</main>
