@@ -47,12 +47,12 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   end
 
   namespace :public do
-    get 'orders/new'
-    post 'orders/confirm', to: 'orders#confirm'
-    get 'orders/done', to: 'orders#done'
-    post 'orders/create'
-    get 'orders/index'
-    get 'orders/show'
+    get 'order_histories/new'
+    post 'order_histories/confirm', to: 'order_histories#confirm'
+    get 'order_histories/done', to: 'order_histories#done'
+    post 'order_histories/create'
+    get 'order_histories/index'
+    get 'order_histories/show'
   end
 
 

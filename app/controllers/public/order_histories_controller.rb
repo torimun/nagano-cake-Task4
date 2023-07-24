@@ -1,13 +1,13 @@
-class Public::OrdersController < ApplicationController
+class Public::OrderHistoriesController < ApplicationController
   def new
     @order_history = OrderHistory.new
     @customer = current_customer
   end
 
   def confirm
+    @order_history = OrderHistory.new(order_history_params)
     @cart_items = CartItem.all
     @customer = current_customer
-    @order_history = OrderHistory.method_of_payments
     @total = 0
     @postage = 800
   end
@@ -26,6 +26,12 @@ class Public::OrdersController < ApplicationController
 
   def show
 
+  end
+
+  private
+
+  def order_history_params
+      params.require(:order_history).permit(:method_of_payment)
   end
 
 end
