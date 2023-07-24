@@ -9,11 +9,12 @@
     <div class="row">
       <strong>支払い方法</strong>
     </div>
-    <%= form_with model: order_history, url: public_orders_confirm_path do |f| %>
+    <%= form_with model: @order_history, url: public_orders_confirm_path do |f| %>
     <div class="row">
-      <%= f.radio_button :payment_method, "credit_card" %>
+      <%= f.radio_button :payment_method, "credit_card", checked: true %>
       <%= f.label :payment_method_credit_card, "クレジットカード" %>
-
+    </div>
+    <div class="row">
       <%= f.radio_button :payment_method, "transfer" %>
       <%= f.label :payment_method_transfer, "銀行振込" %>
     </div>
@@ -29,7 +30,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row mt-5 justify-content-center">
       <div class="col-lg-3">
         <%= f.submit "確認画面に進む", class: "btn btn-primary" %>
       </div>
