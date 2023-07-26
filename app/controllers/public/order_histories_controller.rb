@@ -33,11 +33,11 @@ class Public::OrderHistoriesController < ApplicationController
   end
 
   def index
-    @order_histories = OrderHistory.all
+    @order_detail = OrderDetail.all
   end
 
   def show
-    @order_history = OrderHistory.find(params[:id])
+     @order_detail = OrderDetail.find(params[:id])
   end
 
   private
