@@ -75,16 +75,15 @@
 
     <div class="row justify-content-center">
       <div class="col-lg-3">
-        <%= form_with model: @order_history, public_order_histories_create_path, method: :post do |f| %>
-          <%= f.hidden_field :name, :value=> item.name %>
-          <%= f.hidden_field :add_tax_price, :value=> item.add_tax_price %>
-          <%= f.hidden_field :amount, :value=> item.amount %>
-          <%= f.hidden_field :subtotal, :value=> @cart_item.subtotal %>
-          <%= f.hidden_field :total, :value=> @total %>
-          <%= f.hidden_field :billing_amount, :value=> @total+@postage %>
-          <%= f.hidden_field :method_of_payment, :value=> method_of_payment_i18n %>
-          <%= f.hidden_field :address, :value=> @customer.address %>
-          <%= f.submit "注文を確定する", class: "btn btn-success"%>
+        <%= form_with model: @order_history, url: public_order_histories_create_path, method: :post do |f| %>
+        　<%= f.hidden_field :customer_id, :value=> @customer.id %>
+        　<%= f.hidden_field :postal_code, :value=> @customer.postal_code %>
+        　<%= f.hidden_field :address, :value=> @customer.address %>
+        　<%= f.hidden_field :address_name, :value=> @customer.last_name  %>
+        　<%= f.hidden_field :postage, :value=> @postage %>
+          <%= f.hidden_field :payment_amount, :value=> @total+@postage %>
+          <%= f.hidden_field :method_of_payment %>
+          <%= f.submit "注文を確定する", class: "btn btn-success" %>
         <% end %>
       </div>
     </div>
