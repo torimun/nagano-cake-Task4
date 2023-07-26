@@ -18,6 +18,8 @@ class Public::OrderHistoriesController < ApplicationController
 
   def create
     @order_history = OrderHistory.new(order_history_params)
+    @order_history.save
+    redirect_to public_order_histories_done
   end
 
   def index
