@@ -22,7 +22,7 @@ class Public::OrderHistoriesController < ApplicationController
     cart_items = current_customer.cart_items
       cart_items.each do |cart|
         order_detail = OrderDetail.new
-        order_detail.customer_id = current_customer.id
+        order_detail.order_history_id = @order_history.id
         order_detail.item_id = cart.item.id
         order_detail.quantity = cart.amount
         order_detail.price = cart.item.price
@@ -33,7 +33,7 @@ class Public::OrderHistoriesController < ApplicationController
   end
 
   def index
-    @order_detail = OrderDetail.all
+    @order_history = OrderHistory.all
   end
 
   def show
