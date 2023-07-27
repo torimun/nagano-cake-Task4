@@ -20,7 +20,7 @@
         <table width="100%">
           <tr>
             <td class="border p-2" width="20%">注文日</td>
-            <td class="border p-2" width="80%"><%=  @order_history.created_at %></td>
+            <td class="border p-2" width="80%"><%= @order_history.created_at.strftime('%Y/%m/%d') %></td>
             </tr>
           <tr>
             <td class="border p-2" width="20%">配送先</td>
@@ -55,6 +55,12 @@
     </div>
 
     <div class="row mt-5">
+      <div class="col-lg-3">
+        <strong>注文内容</strong>
+      </div>
+    </div>
+
+    <div class="row my-2">
       <div class="col-lg-9">
         <table width="100%">
           <tr>
@@ -65,10 +71,10 @@
           </tr>
         <% @order_history.order_details.each do |detail| %>
           <tr>
-            <td class="border p-2" width="60%"><%= detail.name %></td>
-            <td class="border p-2" width="20%"><%= detail.price %></td>
-            <td class="border p-2" width="10%"><%= detail.amount %></td>
-            <td class="border p-2" width="10%"><%= detail.cart_item.subtotal %></td>
+            <td class="border p-2" width="60%"><%= detail.item.name %></td>
+            <td class="border p-2" width="20%"><%= detail.item.add_tax_price %></td>
+            <td class="border p-2" width="10%"><%= detail.quantity %></td>
+            <td class="border p-2" width="10%"><%= detail.subtotal %></td>
           </tr>
         <% end %>
         </table>
