@@ -19,23 +19,23 @@
           <tbody>
             <% @order_history.each do |order|%>
               <tr>
-                <td class="border p-2"  width="20%">
+                <td class="border" width="20%">
                   <%= order.created_at.strftime('%Y/%m/%d') %>
                 </td>
-                <td class="border p-2"  width="40%">
+                <td class="border" width="40%">
                   <%= order.postal_code %></br>
                   <%= order.address %></br>
                   <%= order.address_name %>
                 </td>
-                <td class="border p-2"  width="15%">
+                <td class="border" width="15%">
                   <% order.order_details.each do |detail|%>
-                    <p><%= detail.item.name %></p>
+                    <%= detail.item.name %></br>
                   <% end%>
                 </td>
-                <td class="border p-2"  width="10%">
+                <td class="border" width="10%">
                   <%= order.payment_amount %>円
                 </td>
-                <td class="border p-2"  width="15%">
+                <td class="border" width="15%">
                   <%= link_to "表示する", public_order_histories_show_path(order.id), class: "btn btn-primary" %>
                 </td>
               </tr>
