@@ -15,7 +15,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   namespace :admin do
     get 'homes/top'
-    get 'orders/show'
+    get 'orders/:id', to: 'orders#show', as: 'orders_show'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end

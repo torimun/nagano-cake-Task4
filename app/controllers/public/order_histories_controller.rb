@@ -33,6 +33,7 @@ class Public::OrderHistoriesController < ApplicationController
   end
 
   def index
+    #以下の部分をログインしている人の商品一覧に修正
     @order_history = OrderHistory.all
   end
 

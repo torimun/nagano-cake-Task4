@@ -1,7 +1,74 @@
 <main>
-  <div class="row jstifuy-content-center">
-    <div class="col-lg-3 my-4">
-      <h4>注文履歴詳細</h4>
+  <div class="container">
+    <div class="row my-4">
+      <div class="col-lg-6 jstifuy-content-center">
+        <h4>注文履歴詳細</h4>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-lg-10">
+        <table width="100%">
+          <tr>
+            <td width="20%">購入者</td>
+            <td width="80%"><%= @order_history.address_name %></td>
+            </tr>
+          <tr>
+          <tr>
+            <td width="20%">注文日</td>
+            <td width="80%"><%= @order_history.created_at.strftime('%Y/%m/%d') %></td>
+            </tr>
+          <tr>
+            <td width="20%">配送先</td>
+            <td width="80%">
+            〒<%=  @order_history.postal_code %>
+              <%= @order_history.address %></br>
+              <%=  @order_history.address_name %>
+            </td>
+          </tr>
+          <tr>
+            <td width="20%">支払い方法</td>
+            <td width="80%"><%=  @order_history.method_of_payment_i18n %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-lg-8">
+        <table class="border-top" width="100%">
+          <tr>
+            <th class="p-2" width="30%">商品</th>
+            <th class="p-2" width="15%">単価(税込み)</th>
+            <th class="p-2" width="15%">個数</th>
+            <th class="p-2" width="40%">小計</th>
+          </tr>
+        <% @order_history.order_details.each do |detail| %>
+          <tr>
+            <td class="p-2" width="30%"><%= detail.item.name %></td>
+            <td class="p-2" width="15%"><%= detail.item.add_tax_price %></td>
+            <td class="p-2" width="15%"><%= detail.quantity %></td>
+            <td class="p-2" width="40%"><%= detail.subtotal %></td>
+          </tr>
+        <% end %>
+        </table>
+      </div>
+      <div class="col-lg-4 jstifuy-content-center">
+        <table width="100%">
+          <tr>
+            <td class="p-2" width="20%"><strong>商品合計</strong></td>
+            <td class="p-2" width="40%"><%=  @order_history.payment_amount-@postage %>円</td>
+            </tr>
+          <tr>
+            <td class="p-2" width="20%"><strong>送料</strong></td>
+            <td class="p-2" width="40%"><%=  @order_history.postage %>円</td>
+          </tr>
+          <tr>
+            <td class="p-2" width="20%"><strong>請求金額合計</strong></td>
+            <td class="p-2" width="40%"><%=  @order_history.payment_amount %>円</td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </main>
