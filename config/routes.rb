@@ -52,7 +52,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get 'order_histories/done', to: 'order_histories#done'
     post 'order_histories/create'
     get 'order_histories/index'
-    get 'order_histories/show'
+    get 'order_histories/:id', to: 'order_histories#show', as: 'order_histories_show'
   end
 
 

@@ -37,7 +37,8 @@ class Public::OrderHistoriesController < ApplicationController
   end
 
   def show
-     @order_detail = OrderDetail.find(params[:id])
+    @order_history = OrderHistory.find(params[:id])
+    @postage = 800
   end
 
   private

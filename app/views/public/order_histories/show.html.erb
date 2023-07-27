@@ -1,1 +1,78 @@
-<h1>ここは、注文情報詳細画面</h1>
+<main>
+  <div class="container">
+    <div class="row my-4">
+      <div class="col-lg-6 jstifuy-content-center">
+        <h4>注文履歴詳細</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-7">
+        <strong>注文情報</strong>
+      </div>
+      <div class="col-lg-4">
+        <strong>請求情報</strong>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-lg-7">
+        <table width="100%">
+          <tr>
+            <td class="border p-2" width="20%">注文日</td>
+            <td class="border p-2" width="80%"><%=  @order_history.created_at %></td>
+            </tr>
+          <tr>
+            <td class="border p-2" width="20%">配送先</td>
+            <td class="border p-2" width="80%">
+              <%=  @order_history.postal_code %></br>
+              <%= @order_history.address %></br>
+              <%=  @order_history.address_name %>
+            </td>
+          </tr>
+          <tr>
+            <td class="border p-2" width="20%">支払い方法</td>
+            <td class="border p-2" width="80%"><%=  @order_history.method_of_payment_i18n %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-lg-4">
+        <table width="100%">
+          <tr>
+            <td class="border p-2" width="55%">商品合計</td>
+            <td class="border p-2" width="45%"><%=  @order_history.payment_amount-@postage %></td>
+            </tr>
+          <tr>
+            <td class="border p-2" width="55%">配送料</td>
+            <td class="border p-2" width="45%"><%=  @order_history.postage %></td>
+          </tr>
+          <tr>
+            <td class="border p-2" width="55%">ご請求額</td>
+            <td class="border p-2" width="45%"><%=  @order_history.payment_amount %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-lg-9">
+        <table width="100%">
+          <tr>
+            <th class="border p-2" width="60%">商品</th>
+            <th class="border p-2" width="20%">単価（税込み）</th>
+            <th class="border p-2" width="10%">個数</th>
+            <th class="border p-2" width="10%">小計</th>
+          </tr>
+        <% @order_history.order_details.each do |detail| %>
+          <tr>
+            <td class="border p-2" width="60%"><%= detail.name %></td>
+            <td class="border p-2" width="20%"><%= detail.price %></td>
+            <td class="border p-2" width="10%"><%= detail.amount %></td>
+            <td class="border p-2" width="10%"><%= detail.cart_item.subtotal %></td>
+          </tr>
+        <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>

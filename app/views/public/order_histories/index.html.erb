@@ -19,24 +19,24 @@
           <tbody>
             <% @order_history.each do |order|%>
               <tr>
-                <td class="border p-3"  width="20%">
+                <td class="border p-2"  width="20%">
                   <%= order.created_at %>
                 </td>
-                <td class="border p-3"  width="40%">
+                <td class="border p-2"  width="40%">
                   <%= order.postal_code %></br>
                   <%= order.address %></br>
                   <%= order.address_name %>
                 </td>
-                <td class="border p-3"  width="15%">
+                <td class="border p-2"  width="15%">
                   <% order.order_details.each do |detail|%>
                     <p><%= detail.item.name %></p>
                   <% end%>
                 </td>
-                <td class="border p-3"  width="10%">
+                <td class="border p-2"  width="10%">
                   <%= order.payment_amount %>円
                 </td>
-                <td class="border p-3"  width="15%">
-                  <%= link_to ""%>
+                <td class="border p-2"  width="15%">
+                  <%= link_to "表示する", public_order_histories_show_path(order.id), class: "btn btn-primary" %>
                 </td>
               </tr>
             <% end %>
