@@ -1,39 +1,23 @@
 <main>
   <div class="container">
-    <div class="row my-4">
-      <div class="col-lg-6 justify-content-center">
-        <h4>商品詳細</h4>
-      </div>
-    </div>
-
-
-    <div class="row">
+    <div class="row mt-5 jstifuy-content-center">
       <div class="col-lg-3 mr-3">
         <%= image_tag @item.image.variant( resize: "200" ) %>
       </div>
       <div class="col-lg-6">
-        <div class="row">
-          <div class="col-lg-3">
-            <p>商品名</p>
-         </div>
-         <div class="col-lg-4">
-          <%= @item.name %>
+        <div class="row my-2">
+         <div class="col-lg-8">
+          <h3><%= @item.name %></h3>
          </div>
         </div>
 
-        <div class="row">
-          <div class="col-lg-3">
-            <p>商品説明文</p>
-          </div>
-          <div class="col-lg-4">
-            <%= @item.introduction %>
+        <div class="row my-3">
+          <div class="col-lg-8">
+            <strong><%= @item.introduction %></strong>
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-lg-3">
-            <p>税込価格</p>
-          </div>
+        <div class="row my-5">
           <!--以下の様に税込み価格を入れる場合は、@モデル名.add_tax_税込み計算をしたいカラム（今回の例だとprice）を入れる-->
           <!--(:dalimited)は数値を3桁区切りにしてくれるもの-->
           <div class="col-lg-4">
@@ -41,22 +25,17 @@
           </div>
         </div>
 
-        <div class="row">
-          <p>数量を選択して下さい</p>
-        </div>
-
         <%= form_with model: @cart_item, url: public_cart_items_create_path, method: :post do |f| %>
         <div class="row ">
           <div class="col-lg-2 mr-2">
             <%= f.hidden_field :item_id, :value=> @item.id %>
-            <%= f.select :amount, [['1個',1], ['２個',2], ['３個',3], ['４個',4], ['５個',5]] %>
+            <%= f.select :amount, [['１個',1], ['２個',2], ['３個',3], ['４個',4], ['５個',5]] %>
           </div>
           <div class="col-lg-2">
             <%= f.submit "カートに入れる", class: "btn btn-success" %>
           </div>
         </div>
         <% end %>
-
       </div>
     </div>
   </div>

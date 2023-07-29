@@ -15,22 +15,22 @@
       <div class="col-lg-10 jstifuy-content-center">
         <table class="border-top border-bottom" width="100%">
           <tr class="border-bottom">
-            <th width="10%">商品ID</th>
-            <th width="30%">商品名</th>
-            <th width="60%">税抜価格</th>
+            <th class="p-1" width="10%">商品ID</th>
+            <th class="p-1" width="30%">商品名</th>
+            <th class="p-1" width="60%">税抜価格</th>
           </tr>
     <!--繰り返し文(each文)を使って以下の物を量産　1５個分あたりになったらページネーションで次のページに飛ばす-->
           <% @items.each do |item| %>
           <tr class="border-bottom">
-            <td width="10%">
+            <td class="p-2" width="10%">
               <%= item.id %>
             </td>
-            <td width="30%">
+            <td class="p-2" width="30%">
               <%= link_to admin_item_path(item.id) do %>
                 <%= item.name %>
               <% end %>
             </td>
-            <td width="60%">
+            <td class="p-2" width="60%">
               <%= item.price %>
             </td>
           </tr>

@@ -10,24 +10,24 @@
       <div class="col-lg-8 jstifuy-content-center">
         <table width="90%">
           <thead>
-            <th class="border"  width="40%">商品名</th>
-            <th class="border"  width="20%">単価(税込)</th>
-            <th class="border"  width="20%">数量</th>
-            <th class="border"  width="20%">小計</th>
+            <th class="border p-2"  width="40%">商品名</th>
+            <th class="border p-2"  width="20%">単価(税込)</th>
+            <th class="border p-2"  width="20%">数量</th>
+            <th class="border p-2"  width="20%">小計</th>
           </thead>
           <tbody>
             <% @cart_items.each do |cart_item| %>
               <tr>
-                <td class="border"  width="40%">
+                <td class="border p-2"  width="40%">
                   <%= cart_item.item.name %>
                 </td>
-                <td class="border"  width="20%">
+                <td class="border p-2"  width="20%">
                   <%= cart_item.item.add_tax_price %>
                 </td>
-                <td class="border"  width="20%">
+                <td class="border p-2"  width="20%">
                   <%= cart_item.amount%>
                 </td>
-                <td class="border"  width="20%">
+                <td class="border p-2"  width="20%">
                   <%= cart_item.subtotal%>
                   <% @total+= cart_item.subtotal %>
                 </td>
@@ -39,16 +39,16 @@
       <div class="col-lg-3">
         <table>
           <tr>
-            <th class="border" width="40%">送料</th>
-            <td class="border" width="40%">800</td>
+            <th class="border p-2" width="40%">送料</th>
+            <td class="border p-2" width="40%">800</td>
           </tr>
           <tr>
-            <th class="border" width="40%">商品合計</th>
-            <td class="border" width="40%"><%= @total %></td>
+            <th class="border p-2" width="40%">商品合計</th>
+            <td class="border p-2" width="40%"><%= @total %></td>
           </tr>
           <tr>
-            <th class="border" width="40%">請求金額</th>
-            <td class="border" width="40%"><%= @total+@postage %></td>
+            <th class="border p-2" width="40%">請求金額</th>
+            <td class="border p-2" width="40%"><%= @total+@postage %></td>
           </tr>
         </table>
       </div>
@@ -56,7 +56,7 @@
 
     <div class="row my-3">
       <div class="col-lg-2">
-        <strong>支払い方法</strong>
+        <strong>支払方法</strong>
       </div>
       <div class="col-lg-2">
         <%= @order_history.method_of_payment_i18n %>
