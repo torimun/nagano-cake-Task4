@@ -10,22 +10,22 @@
       <div class="col-lg-9">
         <table width="100%">
           <thead>
-            <th class="border-top border-bottom" width="25%">購入日時</th>
-            <th class="border-top border-bottom" width="25%">購入者</th>
-            <th class="border-top border-bottom" width="50%">注文個数</th>
+            <th class="border-top border-bottom p-2" width="25%">購入日時</th>
+            <th class="border-top border-bottom p-2" width="25%">購入者</th>
+            <th class="border-top border-bottom p-2" width="50%">注文個数</th>
           </thead>
           <% @order_history.each do |order| %>
           <tbody>
             <tr>
-              <td class="border-bottom p-1" width="25%">
+              <td class="border-bottom p-2" width="25%">
                 <%= link_to admin_orders_show_path(order.id) do %>
                   <%= order.created_at %>
                 <% end %>
               </td>
-              <td class="border-bottom p-1" width="25%">
+              <td class="border-bottom p-2" width="25%">
                 <%= order.address_name %>
               </td>
-              <td class="border-bottom p-1" width="50%">
+              <td class="border-bottom p-2" width="50%">
                 <%= order.order_details.sum(:quantity) %>
               </td>
             <tr>

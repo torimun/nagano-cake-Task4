@@ -12,10 +12,6 @@ class Public::OrderHistoriesController < ApplicationController
     @postage = 800
   end
 
-  def done
-
-  end
-
   def create
     @order_history = OrderHistory.new(order_history_params)
     @order_history.save
@@ -34,7 +30,7 @@ class Public::OrderHistoriesController < ApplicationController
 
   def index
     #以下の部分をログインしている人の商品一覧に修正
-    @order_history = OrderHistory.all
+    @order_history = OrderHistory.all.page(params[:page]).per(5)
   end
 
   def show
