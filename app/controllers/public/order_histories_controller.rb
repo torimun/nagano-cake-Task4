@@ -30,7 +30,7 @@ class Public::OrderHistoriesController < ApplicationController
 
   def index
     #以下の部分をログインしている人の商品一覧に修正
-    @order_history = OrderHistory.all.page(params[:page]).per(5)
+    @order_history = current_customer.order_histories.page(params[:page]).per(5)
   end
 
   def show
