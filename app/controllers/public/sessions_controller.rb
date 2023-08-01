@@ -44,7 +44,7 @@ class Public::SessionsController < Devise::SessionsController
     return if !@customer
     # 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかつ、is_deletedの値がtrueであるか
     if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
-        redirect_to new_customer_registration_path
+        redirect_to new_customer_session_path
     end
   end
 
